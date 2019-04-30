@@ -57,15 +57,15 @@ export default class App extends Component {
         data={this.state.data}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-        <ListItem
-        leftAvatar={{
-        title: item.name,
-        source: {uri: item.media[0].url},
-        rounded: true,
-        containerStyle: styles.avatar,
-        onPress: () => alert(item.name + item.description + " Value: $" + item.value + " Minimum Trade Value: $" + item.min_trade_val + " Category ID: " + item.category_id + " Condition ID: " + item.condition_id)
-        }}
-        />
+        <Item
+        name = {item.name}
+        media = {item.media[0].url}
+        description = {item.description}
+        value = {item.value}
+        min_trade_val = {item.min_trade_val}
+        category_id = {item.category_id}
+        condition_id = {item.condition_id}
+         />
         )}
         />
         </View>
