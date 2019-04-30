@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-nativ
 import { ListItem } from "react-native-elements";
 import Item from "./Components/Item";
 import PopUp from "./Components/PopUp";
+import Footer from "./Components/Footer";
 
 export default class App extends Component {
 
@@ -49,6 +50,9 @@ export default class App extends Component {
       <FlatList
         onEndReached={this.handleReload}
         onEndReachedThreshold={0}
+        ListFooterComponent={<Footer
+          loading = {this.state.loading}
+          />}
         numColumns = {2}
         data={this.state.data}
         keyExtractor={item => item.id}
@@ -64,12 +68,6 @@ export default class App extends Component {
         />
         )}
         />
-        <ActivityIndicator
-        size="large"
-        color="#0000ff"
-        animating = {this.state.loading}
-        style = {styles.loading}
-        />
         </View>
     );
   }
@@ -77,7 +75,6 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
