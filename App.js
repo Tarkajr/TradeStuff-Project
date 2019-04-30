@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import { ListItem } from "react-native-elements";
 import Item from "./Components/Item";
-import PopUp from "./Components/PopUp";
 import Footer from "./Components/Footer";
 
 export default class App extends Component {
@@ -78,18 +77,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
-  },
-  avatar: {
-    margin: 5,
-    height: 200,
-    width: 150,
-  },
-  loading: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center'
   }
 });

@@ -17,7 +17,7 @@ export default class Item extends Component {
       source: {uri: this.props.media},
       rounded: true,
       containerStyle: styles.avatar,
-      onPress: () => alert(this.props.name + this.props.description + " Value: $" + this.props.value + " Minimum Trade Value: $" + this.props.min_trade_val + " Category ID: " + this.props.category_id + " Condition ID: " + item.condition_id)
+      onPress: () => alert(this.props.name + this.props.description + " Value: $" + this.props.value + " Minimum Trade Value: $" + this.props.min_trade_val + " Category ID: " + this.props.category_id + " Condition ID: " + this.props.condition_id)
       }}
       />
       </View>
