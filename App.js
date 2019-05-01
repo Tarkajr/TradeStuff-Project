@@ -6,6 +6,8 @@ import Footer from "./Components/Footer";
 
 export default class App extends Component {
 
+  // counter is used to prevent appending redundant data to state on handleReload
+
   constructor(props) {
      super(props);
      this.state = {
@@ -48,7 +50,6 @@ Change urlparams and newurlparams to update these values
       error: response.error || null,
       loading: false,
       counter: this.state.counter + 6
-      // counter is used to prevent appending redundant data to state on handleReload
     });
   } catch (error) {
     this.setState({error: error});
