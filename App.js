@@ -16,6 +16,22 @@ export default class App extends Component {
      };
    }
 
+/* URL endpoint accepts the following values:
+sortBy - indicates how the results should be sorted
+        1 = newest first
+        2 = oldest first
+        3 = price (low to high)
+        4 = price (high to low)
+
+rows - indicates the number or rows to fetch at a single time
+        Accepts a Number (default 50)
+
+offset - indicates the number of rows to skip before fetching
+        Accepts a Number
+
+Change urlparams and newurlparams to update these values
+*/
+
   componentDidMount() {
   const urlparams = '?sortBy=3&rows=6'
   this._getStuff(urlparams);
@@ -32,6 +48,7 @@ export default class App extends Component {
       error: response.error || null,
       loading: false,
       counter: this.state.counter + 6
+      // counter is used to prevent appending redundant data to state on handleReload
     });
   } catch (error) {
     this.setState({error: error});
