@@ -4,7 +4,7 @@ TradeStuff-Project is a react native app that renders a list of six items at a t
 
 ## Installation
 
-[Node](https://pip.pypa.io/en/stable/) and npm package manager are required for use. 
+[Node](https://nodejs.org/en/) and npm package manager are required for use. 
 This project uses react-native-elements 
 
 ```bash
