@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
 import { ListItem } from "react-native-elements";
-import Item from "./Components/Item";
-import Footer from "./Components/Footer";
+import Item from "./src/Components/Item";
+import Footer from "./src/Components/Footer";
+import { URL, URLPARAMS, NEWURLPARAMS } from './src/constants';
 
 export default class App extends Component {
 
@@ -35,15 +36,13 @@ Change urlparams and newurlparams to update these values
 */
 
   componentDidMount() {
-  const urlparams = '?sortBy=3&rows=6'
-  this._getStuff(urlparams);
+  this._getStuff(URLPARAMS);
   }
 
   _getStuff = async (params) => {
-  const url = `https://api.tradestuff.com/stuff`;
   this.setState({ loading: true });
   try {
-    let resp = await fetch(url + params)
+    let resp = await fetch(URL + params)
     let response = await resp.json()
     this.setState({
       data: [...this.state.data, ...response.data ],
@@ -57,8 +56,7 @@ Change urlparams and newurlparams to update these values
   }
 
   handleReload = () => {
-    const newurlparams = '?sortBy=3&rows=6&offset=' + this.state.counter
-    this._getStuff(newurlparams)
+    this._getStuff(NEWURLPARAMS + this.state.counter)
   }
 
   render() {
