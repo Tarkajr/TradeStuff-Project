@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-nativ
 import { ListItem } from "react-native-elements";
 import Item from "./src/Components/Item";
 import Footer from "./src/Components/Footer";
-import { URL, URLPARAMS, NEWURLPARAMS } from './src/constants';
+import { URL, URLPARAMS, NEWURLPARAMS, OFFSET } from './src/constants';
 
 export default class App extends Component {
 
@@ -48,7 +48,7 @@ Change urlparams and newurlparams to update these values
       data: [...this.state.data, ...response.data ],
       error: response.error || null,
       loading: false,
-      counter: this.state.counter + 6
+      counter: this.state.counter + OFFSET
     });
   } catch (error) {
     this.setState({error: error});
