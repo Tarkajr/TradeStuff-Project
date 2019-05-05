@@ -3,10 +3,6 @@ import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 
 export default class PopUp extends Component {
 
-  constructor(props) {
-     super(props);
-   }
-
    render() {
      return (
       <View>
