@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { combineReducers } from 'redux'
-import { dataReducer } from './src/Reducers/dataReducer'
+import  dataReducer from './dataReducer'
 
 const rootReducer = combineReducers({
-    dataReducer,
-})
+    dataReducer
+  })
 
 export default rootReducer

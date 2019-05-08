@@ -1,37 +1,39 @@
 import React, { Component } from "react";
 import {
   FETCH_STUFF_REQUEST,
-  FETCH_STUFF_FAILURE,
   FETCH_STUFF_SUCCESS
-} from "./src/types";
+} from "./types";
+import { URL, URLPARAMS, NEWURLPARAMS, OFFSET } from './constants'
 
-export const requestStuff = () => ({ type: FETCH_STUFF_REQUEST });
-
-export const requestStuffFailure = error => {
+function fetchStuffRequest() {
   return {
-    type: FETCH_STUFF_FAILURE,
-    payload: error
-  };
-};
+    type: FETCH_STUFF_REQUEST
+  }
+}
 
-export const receiveStuff = json => ({
-  type: FETCH_STUFF_SUCCESS,
-  payload: json
-});
+function incrementCounter() {
+  return {
+    type: INCREMENT_COUNTER
+  }
+}
 
-export const _getStuffAsync = (params) => {
-  return async dispatch => {
-    dispatch(requestStuff());
-    try {
-      const response = await fetch(URL + params);
-      const json = await response.json();
-      dispatch(receiveStuff(json));
-    } catch (error) {
-      dispatch(requestStuffFailure(error));
-    }
-  };
-};
+function fetchStuffSuccess(json) {
+  return {
+    type: FETCH_STUFF_SUCCESS,
+    items: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
+  }
+}
 
-export const  handleReload = (counter) => {
-  this._getStuffAsync(NEWURLPARAMS + counter)
+export function _getStuffAsync(urlparams) {
+  return dispatch => {
+    dispatch(fetchStuffRequest())
+    return fetch(URL + urlparams)
+      .then(response => response.json())
+      .then(json => dispatch(fetchStuffSuccess(json), incrementCounter()))
+  }
+}
+
+export function handleReload(offset) {
+  _getStuffAsync(NEWURLPARAMS + offset)
 }

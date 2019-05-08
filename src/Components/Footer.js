@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 
-export default class PopUp extends Component {
+export default class Footer extends Component {
 
    render() {
      return (

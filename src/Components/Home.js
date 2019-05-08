@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
 import { connect } from 'react-redux';
-import { ListItem } from "react-native-elements";
-import { Item } from "./src/Components/Item";
-import { Footer } from "./src/Components/Footer";
-import { URL, URLPARAMS, NEWURLPARAMS, OFFSET } from './src/constants';
-import { requestStuff, requestStuffFailure, receiveStuff, _getStuffAsync, handleReload } from './src/actions';
+import Item from "./Item";
+import Footer from "./Footer";
+import { URL, URLPARAMS, NEWURLPARAMS, OFFSET } from '../constants';
+import { _getStuffAsync, handleReload } from '../actions';
 
 class Home extends Component {
 
@@ -28,14 +27,14 @@ Change urlparams and newurlparams to update these values
 */
 
   componentDidMount() {
-  this._getStuffAsync(URLPARAMS);
+  _getStuffAsync(URLPARAMS);
   }
 
   render() {
     return (
       <View style={styles.container}>
       <FlatList
-        onEndReached={this.handleReload(this.props.counter)}
+        onEndReached={handleReload(this.props.counter)}
         onEndReachedThreshold={0}
         ListFooterComponent={<Footer
           loading = {this.props.loading}
@@ -68,16 +67,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
+function mapStateToProps(state){
   return {
     loading: state.loading,
     data: state.data,
-    error: state.error,
     counter: state.counter
   };
 };
 
-
-export default connect(mapStateToProps, {
-  _getStuffAsync
-})(Home);
+export default connect(mapStateToProps)(Home)
