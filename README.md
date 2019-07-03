@@ -1,6 +1,6 @@
 # TradeStuff-Project
 
-TradeStuff-Project is a react native app that renders a list of six items at a time in a grid using JSON data from an API. The rest of the data assosciated with the item is available on click and new items load on scroll.
+TradeStuff-Project is a react native app that renders a list of six items at a time in a grid using JSON data from an API. The rest of the data associated with the item is available on click and new items load on scroll.
 
 ## Installation
 
